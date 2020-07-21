@@ -7,6 +7,9 @@ import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.firefox.FirefoxOptions;
 
+import java.net.MalformedURLException;
+import java.net.URL;
+
 public class Driver {
 
     //1-Make constructor private
@@ -39,6 +42,13 @@ public class Driver {
                     WebDriverManager.firefoxdriver().setup();
                     driver = new FirefoxDriver(new FirefoxOptions().setHeadless(true));
                     break;
+                case "chrome-remote":
+                    try {
+                        ChromeOptions chromeOptions = new ChromeOptions();
+                        URL url = new URL("http://100.25.46.54:4444/wd/hub")
+                    }catch (MalformedURLException e){
+                        e.printStackTrace();
+                    }
             }
         }
         return driver;
